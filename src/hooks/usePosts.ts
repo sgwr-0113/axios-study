@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { JPHClient } from 'apis/JPHClient';
+import { postApi } from 'apis/post';
 import { PostType } from 'types/postTypes';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -10,9 +10,10 @@ export const usePosts = (): [any, boolean, PostType[] | undefined] => {
 
   useEffect(() => {
     const abortCtrl = new AbortController();
-    JPHClient.get('/posts')
+    postApi
+      .getPosts<PostType>()
       .then((result) => {
-        setPostsData(result.data);
+        setPostsData(result);
         setIsLoaded(true);
       })
       .catch((error) => {
