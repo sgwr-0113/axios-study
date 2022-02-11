@@ -1,14 +1,23 @@
 @import "../_variables";
 
-.lists {
-  width: calc(50% - #{$side-gutter});
-  padding-inline-start: 0;
-  .list {
-    list-style: none;
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 8px;
-    background-color: $gray;
-    border-radius: 4px;
+.container {
+  display: flex;
+  justify-content: flex-start;
+  width: calc(100% - #{$side-gutter}*2);
+  .lists {
+    width: 40%;
+    padding-inline-start: 0;
+    .list {
+      list-style: none;
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 8px;
+      background-color: $gray;
+      border-radius: 4px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
   }
 }
+
