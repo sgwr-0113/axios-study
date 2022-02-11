@@ -21,6 +21,7 @@ export const PostLists = () => {
 
   return (
     <>
+      <h2>Posts</h2>
       <ul className={Styles['lists']}>
         {postsData &&
           postsData.map((post, i) => (
