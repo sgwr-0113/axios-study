@@ -26,8 +26,10 @@ export const PickUpPost: React.FC<Props> = (props) => {
     console.log(postData);
   }
 
+  const position: number = 42 * (props.id - 1);
+
   return (
-    <div className={Styles['wrapper']}>
+    <div className={Styles['wrapper']} style={{ marginTop: position }}>
       <h3>PickUpPost</h3>
       {postData && (
         <div>
