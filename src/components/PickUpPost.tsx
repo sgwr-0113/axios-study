@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { usePost } from 'hooks/usePost';
-import { PostType } from 'types/postTypes';
+import { PostType } from 'types/postType';
 import Styles from 'stylesheets/components/PickUpPost.module.scss';
 
 interface Props {

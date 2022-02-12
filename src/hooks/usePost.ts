@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { postApi } from 'apis/post';
-import { PostType } from 'types/postTypes';
+import { PostType } from 'types/postType';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const usePost = (postId: number): [any, boolean, PostType | undefined] => {

@@ -1,19 +1,19 @@
 import { useEffect, useState } from 'react';
-import { postApi } from 'apis/post';
-import { PostType } from 'types/postType';
+import { userApi } from 'apis/user';
+import { UserType } from 'types/userType';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const usePosts = (): [any, boolean, PostType[] | undefined] => {
-  const [postsData, setPostsData] = useState<PostType[]>();
+export const useUsers = (): [any, boolean, UserType[] | undefined] => {
+  const [usersData, setUsersData] = useState<UserType[]>();
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
     const abortCtrl = new AbortController();
-    postApi
-      .getPosts<PostType>()
+    userApi
+      .getUsers<UserType>()
       .then((result) => {
-        setPostsData(result);
+        setUsersData(result);
         setIsLoaded(true);
       })
       .catch((error) => {
@@ -25,5 +25,5 @@ export const usePosts = (): [any, boolean, PostType[] | undefined] => {
     };
   }, []);
 
-  return [error, isLoaded, postsData];
+  return [error, isLoaded, usersData];
 };
