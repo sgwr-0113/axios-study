@@ -5,7 +5,7 @@ import { PickUpUser } from './PickUpUser';
 
 export const UserLists = () => {
   const [errUsers, isLoadedUsers, usersData] = useUsers();
-  const [selectedId, setSelectedId] = useState(0);
+  const [selectedId, setSelectedId] = useState<number | undefined>();
 
   useEffect(() => {
     if (usersData) console.log('users取得完了');
@@ -23,19 +23,22 @@ export const UserLists = () => {
     console.log('fetched');
   }
 
+  if (!usersData) {
+    return <></>;
+  }
+
   return (
     <>
       <h2>Users</h2>
       <div className={Styles['container']}>
         <ul className={Styles['lists']}>
-          {usersData &&
-            usersData.map((user, i) => (
-              <li className={Styles['list']} key={i} onClick={() => setSelectedId(i + 1)}>
-                {user.name}
-              </li>
-            ))}
+          {usersData.map((user, i) => (
+            <li className={Styles['list']} key={i} onClick={() => setSelectedId(i + 1)}>
+              {user.name}
+            </li>
+          ))}
         </ul>
-        {usersData && <PickUpUser data={usersData[selectedId - 1]} />}
+        {selectedId && <PickUpUser data={usersData[selectedId - 1]} />}
       </div>
     </>
   );
