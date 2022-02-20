@@ -1,6 +1,6 @@
 import React from 'react';
 import { UserType } from 'types/userType';
-import Styles from 'stylesheets/components/PickUpPost.module.scss';
+import Styles from 'stylesheets/components/PickUp.module.scss';
 
 interface Props {
   data: UserType;
@@ -17,8 +17,8 @@ export const PickUpUser: React.FC<Props> = (props) => {
   const position: number = 42 * (user.id - 1);
 
   return (
-    <div className={Styles['wrapper']} style={{ marginTop: position }}>
-      <h3>PickUpUser</h3>
+    <div style={{ marginTop: position }}>
+      <h3 className={Styles['heading']}>PickUpUser</h3>
       <div>
         <div>
           <h4>name</h4>

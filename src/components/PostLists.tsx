@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { usePosts } from 'hooks/usePosts';
-import Styles from 'stylesheets/components/PostLists.module.scss';
+import Styles from 'stylesheets/components/Lists.module.scss';
 import { PickUpPost } from './PickUpPost';
 
 export const PostLists = () => {
@@ -12,15 +12,10 @@ export const PostLists = () => {
   }, [isLoadedPosts]);
 
   if (!isLoadedPosts) {
-    console.log('loading...');
     return <p>リストをロード中・・・</p>;
   }
   if (errPosts) {
-    console.log('error');
     return <p>リストを取得できませんでした</p>;
-  }
-  if (postsData) {
-    console.log('fetched');
   }
 
   return (
@@ -28,14 +23,15 @@ export const PostLists = () => {
       <h2>Posts</h2>
       <div className={Styles['container']}>
         <ul className={Styles['lists']}>
-          {postsData &&
-            postsData.map((post, i) => (
-              <li className={Styles['list']} key={i} onClick={() => setSelectedId(i + 1)}>
-                {post.title}
-              </li>
-            ))}
+          {postsData?.map((post, i) => (
+            <li className={Styles['list']} key={i} onClick={() => setSelectedId(i + 1)}>
+              {post.title}
+            </li>
+          ))}
         </ul>
-        <PickUpPost id={selectedId} />
+        <div className={Styles['pickup']}>
+          <PickUpPost id={selectedId} />
+        </div>
       </div>
     </>
   );
