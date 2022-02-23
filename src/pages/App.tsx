@@ -2,13 +2,26 @@ import React from 'react';
 import { PostLists } from 'components/PostLists';
 import { UserLists } from 'components/UserLists';
 import Styles from 'stylesheets/pages/App.module.scss';
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import 'react-tabs/style/react-tabs.css';
 
 export const App = () => {
   return (
     <div className={Styles['wrapper']}>
-      <h1>App</h1>
-      <PostLists />
-      <UserLists />
+      <h1>axios-study</h1>
+      <Tabs>
+        <TabList>
+          <Tab>Posts</Tab>
+          <Tab>Users</Tab>
+        </TabList>
+
+        <TabPanel>
+          <PostLists />
+        </TabPanel>
+        <TabPanel>
+          <UserLists />
+        </TabPanel>
+      </Tabs>
     </div>
   );
 };

@@ -20,7 +20,6 @@ export const UserLists = () => {
 
   return (
     <>
-      <h2>Users</h2>
       <div className={Styles['container']}>
         <ul className={Styles['lists']}>
           {usersData?.map((user, i) => (

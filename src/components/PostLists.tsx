@@ -20,7 +20,6 @@ export const PostLists = () => {
 
   return (
     <>
-      <h2>Posts</h2>
       <div className={Styles['container']}>
         <ul className={Styles['lists']}>
           {postsData?.map((post, i) => (
