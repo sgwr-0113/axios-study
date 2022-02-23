@@ -4,10 +4,11 @@ import { PostType } from 'types/postType';
 import Styles from 'stylesheets/components/PickUp.module.scss';
 
 interface Props {
-  id: number;
+  id?: number;
 }
 
 export const PickUpPost: React.FC<Props> = (props) => {
+  if (!props.id) return <p>ピックアップが選択されていません</p>;
   const [errPost, isLoadedPost, postData] = usePost(props.id);
 
   useEffect(() => {
@@ -16,8 +17,7 @@ export const PickUpPost: React.FC<Props> = (props) => {
   }, [isLoadedPost, props.id]);
 
   if (!isLoadedPost) {
-    if (postData) console.log('loadingp');
-    return postData ? <p>ピックアップをロード中・・・</p> : <p>ピックアップが選択されていません</p>;
+    return <p>ピックアップをロード中・・・</p>;
   }
   if (errPost) {
     return <p>ピックアップを取得できませんでした</p>;

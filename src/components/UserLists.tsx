@@ -14,7 +14,8 @@ export const UserLists = () => {
   if (!isLoadedUsers) {
     return <p>リストをロード中・・・</p>;
   }
-  if (errUsers) {
+  if (!usersData || errUsers) {
+    console.log('usersDataないよ');
     return <p>リストを取得できませんでした</p>;
   }
 
@@ -29,7 +30,7 @@ export const UserLists = () => {
           ))}
         </ul>
         <div className={Styles['pickup']}>
-          {usersData && selectedId && <PickUpUser data={usersData[selectedId - 1]} />}
+          {selectedId ? <PickUpUser data={usersData[selectedId - 1]} /> : <p>ピックアップが選択されていません</p>}
         </div>
       </div>
     </>

@@ -5,7 +5,7 @@ import { PickUpPost } from './PickUpPost';
 
 export const PostLists = () => {
   const [errPosts, isLoadedPosts, postsData] = usePosts();
-  const [selectedId, setSelectedId] = useState(0);
+  const [selectedId, setSelectedId] = useState<number | undefined>();
 
   useEffect(() => {
     if (postsData) console.log('posts取得完了');
