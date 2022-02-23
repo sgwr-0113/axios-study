@@ -21,6 +21,7 @@ export const PhotoLists = () => {
 
   return (
     <>
+      <p className={Styles['explanation']}>重いデータを取得</p>
       <div className={Styles['container']}>
         <ul className={Styles['lists']}>
           {photosData?.map((photo, i) => (

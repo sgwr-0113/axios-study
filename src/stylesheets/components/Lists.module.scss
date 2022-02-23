@@ -1,5 +1,9 @@
 @import "../_variables";
 
+.explanation {
+  color: $red;
+}
+
 .container {
   display: flex;
   justify-content: flex-start;

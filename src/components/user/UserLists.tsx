@@ -1,35 +1,37 @@
 import React, { useEffect, useState } from 'react';
-import { usePosts } from 'hooks/usePosts';
+import { useUsers } from 'hooks/useUsers';
 import Styles from 'stylesheets/components/Lists.module.scss';
-import { PickUpPost } from './PickUpPost';
+import { PickUpUser } from './PickUpUser';
 
-export const PostLists = () => {
-  const [errPosts, isLoadedPosts, postsData] = usePosts();
+export const UserLists = () => {
+  const [errUsers, isLoadedUsers, usersData] = useUsers();
   const [selectedId, setSelectedId] = useState<number | undefined>();
 
   useEffect(() => {
-    if (postsData) console.log('posts取得完了');
-  }, [isLoadedPosts]);
+    if (usersData) console.log('users取得完了');
+  }, [isLoadedUsers]);
 
-  if (!isLoadedPosts) {
+  if (!isLoadedUsers) {
     return <p>リストをロード中・・・</p>;
   }
-  if (errPosts) {
+  if (!usersData || errUsers) {
+    console.log('usersDataないよ');
     return <p>リストを取得できませんでした</p>;
   }
 
   return (
     <>
+      <p className={Styles['explanation']}>ピックアップはpropsで受け渡し</p>
       <div className={Styles['container']}>
         <ul className={Styles['lists']}>
-          {postsData?.map((post, i) => (
+          {usersData?.map((user, i) => (
             <li className={Styles['list']} key={i} onClick={() => setSelectedId(i + 1)}>
-              {post.title}
+              {user.name}
             </li>
           ))}
         </ul>
         <div className={Styles['pickup']}>
-          <PickUpPost id={selectedId} />
+          {selectedId ? <PickUpUser data={usersData[selectedId - 1]} /> : <p>ピックアップが選択されていません</p>}
         </div>
       </div>
     </>
