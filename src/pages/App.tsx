@@ -1,6 +1,7 @@
 import React from 'react';
 import { PostLists } from 'components/PostLists';
 import { UserLists } from 'components/UserLists';
+import { PhotoLists } from 'components/PhotoLists';
 import Styles from 'stylesheets/pages/App.module.scss';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
@@ -13,6 +14,7 @@ export const App = () => {
         <TabList>
           <Tab>Posts</Tab>
           <Tab>Users</Tab>
+          <Tab>Photos</Tab>
         </TabList>
 
         <TabPanel>
@@ -20,6 +22,9 @@ export const App = () => {
         </TabPanel>
         <TabPanel>
           <UserLists />
+        </TabPanel>
+        <TabPanel>
+          <PhotoLists />
         </TabPanel>
       </Tabs>
     </div>
